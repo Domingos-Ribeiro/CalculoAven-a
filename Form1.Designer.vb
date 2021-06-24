@@ -1,4 +1,6 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+﻿Imports System.Data.SqlClient
+
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form1
     Inherits System.Windows.Forms.Form
 
@@ -56,6 +58,7 @@ Partial Class Form1
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.numValorBase, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.pnResidencia.SuspendLayout()
@@ -190,11 +193,11 @@ Partial Class Form1
         Me.lblAviso.AutoSize = True
         Me.lblAviso.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAviso.ForeColor = System.Drawing.Color.Red
-        Me.lblAviso.Location = New System.Drawing.Point(64, 478)
+        Me.lblAviso.Location = New System.Drawing.Point(22, 478)
         Me.lblAviso.Name = "lblAviso"
-        Me.lblAviso.Size = New System.Drawing.Size(233, 25)
+        Me.lblAviso.Size = New System.Drawing.Size(307, 25)
         Me.lblAviso.TabIndex = 9
-        Me.lblAviso.Text = "P. F.  DIGITE O NOME"
+        Me.lblAviso.Text = "POR FAVOR DIGITE O NOME"
         '
         'Label7
         '
@@ -320,6 +323,7 @@ Partial Class Form1
         Me.Button1.TabIndex = 14
         Me.Button1.Text = "CALCULAR A AVENÇA"
         Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
         'Panel4
         '
@@ -403,12 +407,23 @@ Partial Class Form1
         Me.Panel3.Size = New System.Drawing.Size(536, 54)
         Me.Panel3.TabIndex = 21
         '
+        'Button2
+        '
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Location = New System.Drawing.Point(22, 472)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(309, 38)
+        Me.Button2.TabIndex = 22
+        Me.Button2.Text = "SAIR DA APLICAÇÃO"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.ClientSize = New System.Drawing.Size(582, 530)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.pnResidencia)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.pnVazio)
@@ -471,6 +486,8 @@ Partial Class Form1
         If True Then
             pnResidencia.Visible = False
         End If
+
+        OnChanged()
     End Sub
 
 
@@ -492,14 +509,129 @@ Partial Class Form1
 
 
 
-        If cmbAnoNasc.Text = "Selecione aqui" Then
-            MessageBox.Show("Por favor, Selecione o Ano de Nascimento")
+        'If cmbAnoNasc.Text = "Selecione aqui" Then
+        '    MessageBox.Show("Por favor, Selecione o Ano de Nascimento")
 
-            cmbAnoNasc.Text = 1900
+        '    cmbAnoNasc.Text = 1900
 
+        'End If
+
+
+
+        ''Adquirir o valor digitado no NumericUpDown
+        'Dim valorBase = Convert.ToInt16(numValorBase.Text)
+
+        ''Acumulado
+        'Dim acumulado = valorBase
+
+        ''Converter o valor do ano para um numero inteiro
+        'Dim ano = Convert.ToInt16(cmbAnoNasc.Text)
+
+        ''Desconto de 10%
+        'Dim descontoNascimento As Double = valorBase * 0.1
+
+        ''Desconto do valor base
+        'Dim descontoEscalao As Double = valorBase * 0.1
+
+        ''Desconto de 5%
+        'Dim descontoSocio As Double = valorBase * 0.05
+
+        ''Desconto do Distrito 1%
+        'Dim descontoDistrito As Double = valorBase * 0.01
+
+        ''Desconto do Concelho de Barrancos
+        'Dim descontoConcelho As Double = valorBase * 0.2
+
+
+
+        ''---------------------------------------------------------
+        'If chkEscalao10.Checked Then
+        '    acumulado = valorBase - descontoEscalao
+        'End If
+        ''---------------------------------------------------------
+        'If chkSocio5.Checked Then
+        '    acumulado = acumulado - descontoSocio
+        'End If
+        ''---------------------------------------------------------
+        'If chkAgrav12.Checked Then
+        '    acumulado = acumulado + 12
+        'End If
+        ''---------------------------------------------------------
+        'If rbSim.Checked Then
+        '    acumulado = acumulado - descontoDistrito
+        'End If
+        ''---------------------------------------------------------
+        'If cmbConcelho.Text = "Barrancos" Then
+        '    acumulado = acumulado - descontoConcelho
+        'End If
+
+        ''Se o ano for 2000 ou superior
+        'If ano > 2000 Then
+        '    acumulado = acumulado - descontoNascimento
+        'End If
+
+        'TxtTotal.Text = Convert.ToString(acumulado) + ".00€"
+
+    End Sub
+
+    Friend WithEvents TxtTotal As TextBox
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Button2.Visible = False
+
+        Button1.Visible = False
+
+
+
+    End Sub
+
+
+
+    Friend WithEvents Label11 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents Panel5 As Panel
+    Friend WithEvents Label12 As Label
+    Friend WithEvents Panel6 As Panel
+    Friend WithEvents Panel7 As Panel
+    Friend WithEvents Panel8 As Panel
+    Friend WithEvents Label13 As Label
+    Friend WithEvents Panel3 As Panel
+
+    Private Sub txtNome_TextChanged(sender As Object, e As EventArgs) Handles txtNome.TextChanged
+        If txtNome.Text <> "" Then
+            ' Button1.Visible = True
+            lblAviso.Text = ""
+            Button2.Visible = True
+        Else
+            ' Button1.Visible = False
+            lblAviso.Text = "POR FAVOR DIGITE O NOME"
+            Button2.Visible = False
         End If
 
+    End Sub
 
+    Private Sub chkEscalao10_CheckedChanged(sender As Object, e As EventArgs) Handles chkEscalao10.CheckedChanged
+
+        OnChanged()
+
+    End Sub
+
+
+    Private Sub OnChanged()
+
+
+        'If cmbAnoNasc.Text = "Selecione aqui" Then
+        '    MessageBox.Show("Por favor, Selecione o Ano de Nascimento")
+
+        '    cmbAnoNasc.Text = 1900
+
+        'End If
+
+
+
+        cmbAnoNasc.Text = 1900
 
         'Adquirir o valor digitado no NumericUpDown
         Dim valorBase = Convert.ToInt16(numValorBase.Text)
@@ -557,35 +689,48 @@ Partial Class Form1
 
     End Sub
 
-    Friend WithEvents TxtTotal As TextBox
-
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        Button1.Visible = False
-
+    Private Sub cmbAnoNasc_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbAnoNasc.SelectedIndexChanged
+        OnChanged()
     End Sub
 
+    Private Sub chkSocio5_CheckedChanged(sender As Object, e As EventArgs) Handles chkSocio5.CheckedChanged
+        OnChanged()
+    End Sub
 
+    Private Sub chkAgrav12_CheckedChanged(sender As Object, e As EventArgs) Handles chkAgrav12.CheckedChanged
+        OnChanged()
+    End Sub
 
-    Friend WithEvents Label11 As Label
-    Friend WithEvents Label10 As Label
-    Friend WithEvents Panel4 As Panel
-    Friend WithEvents Panel5 As Panel
-    Friend WithEvents Label12 As Label
-    Friend WithEvents Panel6 As Panel
-    Friend WithEvents Panel7 As Panel
-    Friend WithEvents Panel8 As Panel
-    Friend WithEvents Label13 As Label
-    Friend WithEvents Panel3 As Panel
+    Private Sub cmbConcelho_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbConcelho.SelectedIndexChanged
+        OnChanged()
+    End Sub
 
-    Private Sub txtNome_TextChanged(sender As Object, e As EventArgs) Handles txtNome.TextChanged
-        If txtNome.Text <> "" Then
-            Button1.Visible = True
-            lblAviso.Text = ""
-        Else
-            Button1.Visible = False
-            lblAviso.Text = "P. F.  DIGITE O NOME"
-        End If
+    Private Sub numValorBase_ValueChanged(sender As Object, e As EventArgs) Handles numValorBase.ValueChanged
+        OnChanged()
+    End Sub
+
+    Friend WithEvents Button2 As Button
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+
+        Me.Close()
 
     End Sub
 End Class
+
+'Private Sub BuscarDados()
+'    Dim Con As SqlConnection = New SqlConnection(SC)
+'    Con.Open()
+
+'    Dim cmd As SqlCommand = New SqlCommand(ssql, Con)
+
+'    Dim adapter As SqlDataAdapter = New SqlDataAdapter(cmd)
+
+'    Dim dt As New DataTable()
+'    adapter.Fill(dt)
+
+'    adapter.Dispose()
+'    Con.Close()
+
+'    Return dt
+'End Sub
