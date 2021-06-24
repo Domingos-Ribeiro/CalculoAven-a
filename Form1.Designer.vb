@@ -193,7 +193,7 @@ Partial Class Form1
         Me.lblAviso.AutoSize = True
         Me.lblAviso.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAviso.ForeColor = System.Drawing.Color.Red
-        Me.lblAviso.Location = New System.Drawing.Point(22, 478)
+        Me.lblAviso.Location = New System.Drawing.Point(23, 478)
         Me.lblAviso.Name = "lblAviso"
         Me.lblAviso.Size = New System.Drawing.Size(307, 25)
         Me.lblAviso.TabIndex = 9
@@ -410,7 +410,7 @@ Partial Class Form1
         'Button2
         '
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(22, 472)
+        Me.Button2.Location = New System.Drawing.Point(22, 471)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(309, 38)
         Me.Button2.TabIndex = 22
