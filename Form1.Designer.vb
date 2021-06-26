@@ -621,15 +621,13 @@ Partial Class Form1
 
     Private Sub OnChanged()
 
-
+        '''''''''''''''''   Lembrar para escolher o Ano de Nascimento   '''''''''''''''''
         'If cmbAnoNasc.Text = "Selecione aqui" Then
         '    MessageBox.Show("Por favor, Selecione o Ano de Nascimento")
 
         '    cmbAnoNasc.Text = 1900
 
         'End If
-
-
 
         cmbAnoNasc.Text = 1900
 
